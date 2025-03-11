@@ -4,7 +4,7 @@ class Home extends PureComponent {
 
     render() {
         return (
-            <div>
+            <div className='h-190'>
                 <p>Home page</p>
             </div>
         )
