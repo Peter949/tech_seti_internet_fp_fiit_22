@@ -1,34 +1,35 @@
 import React from "react";
-export const Button = (props) => {
-  const { size, color, title } = props;
-  const defaultClass =
-    "flex items-center rounded-2 h-[40px] w-[max-content] px-4 py-2";
 
-  const classes = {
-    colors: {
-      primary: {
-        button: "bg-amber-700",
-        text: "text-red",
-      },
-      secondary: {
-        button: "bg-red-500",
-        text: "text-white",
-      },
+export const Button = ({ size, color, title, onClick }) => {
+  const baseClass = "flex items-center rounded-2 h-[40px] w-[max-content] px-4 py-2 cursor-pointer";
+  
+  const colorStyles = {
+    primary: {
+      container: "bg-amber-700",
+      text: "text-red-500" // Исправлено на text-red-500 (предполагая, что вы хотели красный текст)
     },
-    sizes: {
-      small: "rounded-[100px] font-sm",
-      medium: "rounded-[14px] font-base",
-      large: "rounded-[16px] font-base min-h-[56px]",
+    secondary: {
+      container: "bg-red-500",
+      text: "text-white"
     },
+    danger: { // Добавим danger вариант для кнопки "Отмена"
+      container: "bg-gray-500",
+      text: "text-white"
+    }
+  };
+
+  const sizeStyles = {
+    small: "rounded-[100px] text-sm",
+    medium: "rounded-[14px] text-base",
+    large: "rounded-[16px] text-base min-h-[56px]"
   };
 
   return (
-    <div
-      className={
-        defaultClass + " " + classes.sizes[size] + " " + classes.colors[color].button
-      }
+    <div 
+      className={`${baseClass} ${colorStyles[color]?.container || ''} ${sizeStyles[size] || ''}`}
+      onClick={onClick}
     >
-      <div className={classes.colors[color].text}>{title}</div>
+      <div className={colorStyles[color]?.text || ''}>{title}</div>
     </div>
   );
 };

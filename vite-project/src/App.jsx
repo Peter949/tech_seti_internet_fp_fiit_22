@@ -7,6 +7,7 @@ import About from './pages/About'
 import Home from './pages/Home'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import { Counter } from './components/Counter'
 
 function App() {
   const [count, setCount] = useState(0)
